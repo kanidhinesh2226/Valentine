@@ -3,30 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <title>For You ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="hearts"></div>
+<!-- Hearts background -->
+<div class="hearts"></div>
 
-  <section class="hero">
-    <h1>This is not a normal website.</h1>
-    <p>This is everything I never said properly.</p>
-    <button onclick="scrollToStory()">Start the journey</button>
-  </section>
+<div class="container">
 
-  <section class="story" id="story">
-    <h2>Our Story</h2>
-    <p>Day 1 – I didn’t expect you to become this important.</p>
-    <p>We fought. We laughed. We learned.</p>
-    <p>And somehow, we stayed.</p>
-  </section>
+  <!-- STEP 1 : HI VIDEO -->
+  <div class="card active">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="videos/hi.mp4" type="video/mp4">
+      Your browser does not support video.
+    </video>
 
-  <section class="final">
-    <h1>So… will you be my Valentine? ❤️</h1>
-    <button onclick="yesClick()">Yes ❤️</button>
-    <button onclick="talkClick()">Talk to me</button>
-  </section>
+    <h2>Hi… 👋</h2>
+    <p>It started with a simple hi… and somehow meant everything.</p>
+    <button onclick="nextCard()">Next</button>
+  </div>
 
-  <script src="script.js"></script>
-</ hooking
+  <!-- STEP 2 : BLUSH -->
+  <div class="card">
+    <h2>Holding hands 💕</h2>
+    <p>Some feelings don’t need words.</p>
+    <button onclick="nextCard()">Next</button>
+  </div>
+
+  <!-- STEP 3 : HUG -->
+  <div class="card">
+    <h2>A safe hug 🤍</h2>
+    <p>The world felt quieter here.</p>
+    <button onclick="nextCard()">Next</button>
+  </div>
+
+  <!-- STEP 4 : VALENTINE -->
+  <div class="card">
+    <h2>Forever? 💋</h2>
+    <p>So… will you be my Valentine?</p>
+    <button onclick="finalClick()">Yes ❤️</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
