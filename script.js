@@ -1,36 +1,111 @@
-// script.js
-
-function scrollToStory() {
-  document.getElementById("story").scrollIntoView({
-    behavior: "smooth"
-  });
+* {
+  box-sizing: border-box;
 }
 
-function yesClick() {
-  alert("Happy Valentine’s Day ❤️\nYou mean everything to me.");
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle, #1a1a1a, #000);
+  color: white;
+  overflow: hidden;
 }
 
-function talkClick() {
-  // CHANGE THIS NUMBER
-  window.location.href = "https://wa.me/919840077017";
+.container {
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
 }
 
-/* HEART BACKGROUND LOGIC */
-const heartsContainer = document.querySelector(".hearts");
-
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (4 + Math.random() * 4) + "s";
-  heart.style.opacity = Math.random();
-
-  heartsContainer.appendChild(heart);
-
-  setTimeout(() => {
-    heart.remove();
-  }, 8000);
+.card {
+  position: absolute;
+  width: 90%;
+  max-width: 360px;
+  padding: 30px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 26px;
+  text-align: center;
+  opacity: 0;
+  transform: rotateY(25deg) scale(0.9);
+  transition: all 0.8s ease;
+  backdrop-filter: blur(12px);
 }
 
-setInterval(createHeart, 400);
+.card.active {
+  opacity: 1;
+  transform: rotateY(0deg) scale(1);
+}
+
+/* VIDEO */
+.hero-video {
+  width: 240px;
+  max-width: 90%;
+  border-radius: 20px;
+  margin: 10px auto 20px;
+  display: block;
+  transform: perspective(800px) rotateY(-6deg);
+  box-shadow: 0 20px 50px rgba(255,77,109,0.45);
+}
+
+h2 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+p {
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  background: #ff4d6d;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* HEARTS */
+.hearts {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: rgba(255,77,109,0.6);
+  transform: rotate(45deg);
+  animation: floatUp 6s linear infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: rgba(255,77,109,0.6);
+  border-radius: 50%;
+}
+
+.heart::before { top: -8px; }
+.heart::after { left: -8px; }
+
+@keyframes floatUp {
+  from {
+    transform: translateY(100vh) rotate(45deg);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10vh) rotate(45deg);
+    opacity: 0;
+  }
+}
